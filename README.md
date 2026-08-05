@@ -1,4 +1,4 @@
-# Tic-Tac-Toe AI Player — Minimax with Alpha-Beta Pruning
+# Tic-Tac-Toe AI Player - Minimax with Alpha-Beta Pruning
 
 Project 3 deliverable: an adversarial-search game agent for Tic-Tac-Toe,
 built around the **Minimax algorithm** with optional **alpha-beta
