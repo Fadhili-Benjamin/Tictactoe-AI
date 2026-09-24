@@ -18,9 +18,7 @@ from game_engine import TicTacToe, make_ai, PLAYER_X, PLAYER_O, DIFFICULTY_PRESE
 
 st.set_page_config(page_title="Tic-Tac-Toe AI (Minimax)", page_icon="❌", layout="centered")
 
-# ------------------------------------------------------------------ #
 # Session state initialisation
-# ------------------------------------------------------------------ #
 def new_game(human_symbol: str, difficulty: str):
     st.session_state.game = TicTacToe()
     st.session_state.human_symbol = human_symbol
@@ -36,9 +34,7 @@ def new_game(human_symbol: str, difficulty: str):
 if "game" not in st.session_state:
     new_game(PLAYER_X, "Unbeatable")
 
-# ------------------------------------------------------------------ #
 # Sidebar: settings
-# ------------------------------------------------------------------ #
 with st.sidebar:
     st.header("Game Settings")
     symbol_choice = st.radio("Play as", ["X (first)", "O (second)"], index=0)
@@ -67,9 +63,7 @@ with st.sidebar:
                      for k, v in DIFFICULTY_PRESETS.items())
     )
 
-# ------------------------------------------------------------------ #
 # Header
-# ------------------------------------------------------------------ #
 st.title("❌⭕ Tic-Tac-Toe — Minimax AI")
 st.caption(
     "An adversarial-search game agent built with the Minimax algorithm "
@@ -82,9 +76,7 @@ ai_symbol = st.session_state.ai_symbol
 
 status_placeholder = st.empty()
 
-# ------------------------------------------------------------------ #
 # AI move (if it's the AI's turn and the game isn't over)
-# ------------------------------------------------------------------ #
 def ai_take_turn():
     ai = st.session_state.ai
     ai.use_alpha_beta = use_alpha_beta
@@ -103,9 +95,7 @@ if (not game.is_game_over()) and st.session_state.current == ai_symbol:
         ai_take_turn()
     st.rerun()
 
-# ------------------------------------------------------------------ #
 # Board rendering
-# ------------------------------------------------------------------ #
 winning_line = game.winning_line()
 
 def cell_label(i):
@@ -136,9 +126,9 @@ for row in range(3):
             st.session_state.current = PLAYER_O if st.session_state.current == PLAYER_X else PLAYER_X
             st.rerun()
 
-# ------------------------------------------------------------------ #
+
 # Status / result
-# ------------------------------------------------------------------ #
+
 result = game.winner()
 if result is None:
     turn_owner = "You" if st.session_state.current == human_symbol else "AI"
@@ -150,9 +140,9 @@ elif result == human_symbol:
 else:
     status_placeholder.error("AI wins.")
 
-# ------------------------------------------------------------------ #
+
 # Move history (useful for the "demo games" report requirement)
-# ------------------------------------------------------------------ #
+
 with st.expander("📜 Move history / demo log"):
     if not st.session_state.history:
         st.write("No moves yet.")
