@@ -9,7 +9,7 @@ pruning** and **depth-limited difficulty levels**.
 | File                   | Purpose |
 |-------------------------|---------|
 | `game_engine.py`        | Core game rules + `MinimaxAI` search agent (the "brain") |
-| `app.py`                 | Streamlit web GUI — human vs AI, the one to deploy |
+| `app.py`                 | Streamlit web GUI, human vs AI, the one to deploy |
 | `cli_play.py`            | Terminal version, for quick local testing |
 | `benchmark_pruning.py`   | Generates the "pruning impact on speed" analysis for your report |
 | `requirements.txt`       | Python dependencies |
